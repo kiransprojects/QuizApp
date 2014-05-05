@@ -4,7 +4,7 @@ init:function(controller){
         var username=localStorage.getItem("username");
         if(username == null || username.trim().length <= 0)
         {
-                this.transitionToRoute('/');
+                this.transitionToRoute('welcome');
                 return;
         }
         else{

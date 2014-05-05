@@ -8,7 +8,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
           if(username == null || username.trim().length <= 0)
           {
             localStorage.setItem("redirectURL",window.location.href);
-            this.transitionToRoute('/');
+            this.transitionToRoute('welcome');
             return;
           }
           else
@@ -25,7 +25,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
             var nextQ = parseInt(id)+1;
             if(nextQ > questions.length)
             {
-              this.transitionToRoute('/result');
+              this.transitionToRoute('result');
               return;
             }
             this.transitionToRoute('/'+nextQ);
