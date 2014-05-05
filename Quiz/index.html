@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<link rel="stylesheet" href="CSS/QuizApp.css">
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="welcome">
+<div class="questionBox" style="padding-left:50px;padding-top:10px;">
+	<h1>Welcome to Quiz</h1>
+	<div>
+  		<label>Enter you Name:</label> {{input class="nameBox" type="text" value=username}}
+  		<button {{action 'enterQuiz'}}>Enter Quiz!</button>
+	</div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="question">
+<div class="questionBox">
+	<div style="padding-left:50px;">
+	<h1>Welcome {{username}}</h1>
+	<div>	
+	<h3>Question No {{id}} : {{question}}</h3>
+	{{#each option in answers}}
+	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionIdBinding=id optSelBinding=option}}
+	{{option}}
+	{{/view}}
+	<!-- <div class="option" {{action "questionAnswered" id option}}>{{option}}</div>
+	-->
+	{{/each}}
+	</div>
+	</div>
+	<div class="nextPrevDiv">
+	 <button class="previous" {{action "previous" id}}>Previous</button>
+	 <button class="next" {{action "next" id}}>Next</button>
+	</div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="result">
+ <div class="questionBox" style="padding:50px;">
+	Correct Answers:{{correctAnswers}}/{{totalAnswered}}
+	Unanswered:{{unanswered}}
+ </div>
+</script>
+
+<script src="../jquery-1.10.2.js"></script>
+<script src="../handlebars-1.1.2.js"></script>
+<script src="../ember-1.5.1.js"></script>
+<script src="JS/QuizApp.js"></script>
+</body>
+</html>
