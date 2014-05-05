@@ -20,7 +20,7 @@
 <div class="questionBox">
 	<div style="padding-left:50px;">
 	<h1>Welcome {{username}}</h1>
-	<div>	
+	<div>
 	<h3>Question No {{id}} : {{question}}</h3>
 	{{#each option in answers}}
 	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionIdBinding=id optSelBinding=option}}
@@ -49,5 +49,10 @@
 <script src="../handlebars-1.1.2.js"></script>
 <script src="../ember-1.5.1.js"></script>
 <script src="JS/QuizApp.js"></script>
+<script src="JS/Controllers/QuestionController.js"></script>
+<script src="JS/Controllers/ResultController.js"></script>
+<script src="JS/Controllers/WelcomeController.js"></script>
+<script src="JS/Routes/ResultRoute.js"></script>
+<script src="JS/Routes/QuestionRoute.js"></script>
 </body>
 </html>
