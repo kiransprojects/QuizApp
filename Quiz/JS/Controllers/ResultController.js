@@ -11,12 +11,16 @@ init:function(controller){
                 this.username=username;
         }
         },
-correctAnswers:function(){
-return this.filterBy("isCorrect",true).length;
-}.property(),
-totalAnswered:function(){
-return this.filterBy("isAnswered",true).length;}.property(),
-unanswered:function(){
-	return this.get("model").length-this.get("totalAnswered");
-	}.property()
+correctAnswers:function()
+               {
+                  return this.filterBy("isCorrect",true).length;
+               }.property(),
+totalAnswered:function()
+              {
+                return this.filterBy("isAnswered",true).length;
+              }.property(),
+unanswered:function()
+           {
+              return this.get("model").length-this.get("totalAnswered");
+           }.property()
 });

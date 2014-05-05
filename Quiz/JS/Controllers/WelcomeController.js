@@ -17,7 +17,7 @@ actions:{
 				return;
 			}
 		}
-                window.location.href="#/1";
+            this.transitionToRoute('/1');
   	}
    }
 });
