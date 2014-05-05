@@ -12,10 +12,12 @@ init:function(controller){
         }
         },
 
-  quitQuiz:function(){
-    localStorage.removeItem("username");
-    localStorage.removeItem("redirectURL");
-    this.transitionToRoute('welcome');
+  actions:{
+    quitQuiz:function(){
+      localStorage.removeItem("username");
+      localStorage.removeItem("redirectURL");
+      this.transitionToRoute('welcome');
+    }
   },
 
 correctAnswers:function()
