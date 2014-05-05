@@ -4,13 +4,20 @@ init:function(controller){
         var username=localStorage.getItem("username");
         if(username == null || username.trim().length <= 0)
         {
-                window.location.href="#";
+                this.transitionToRoute('/');
                 return;
         }
         else{
                 this.username=username;
         }
         },
+
+  quitQuiz:function(){
+    localStorage.removeItem("username");
+    localStorage.removeItem("redirectURL");
+    this.transitionToRoute('welcome');
+  },
+
 correctAnswers:function()
                {
                   return this.filterBy("isCorrect",true).length;

@@ -1,5 +1,5 @@
 QuizApp.WelcomeController=Ember.ObjectController.extend({
-username : "",
+  username : "",
 actions:{
   	enterQuiz : function(){
 		if(this.username.trim().length <= 0)

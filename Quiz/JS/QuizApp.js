@@ -8,17 +8,15 @@ this.resource("result");
 
 
 QuizApp.OptionView = Ember.View.extend({
-attributeBindings:["questionId","optSel"],
 click:function(event){
 	var el = event.target;
-	var questionId = el.getAttribute("questionId");
-	var optSel = el.getAttribute("optSel");
+	var questionId = this.get("questionId");
+	var optSel = this.get("optSel");
 	el.className="option clicked";
 	var que = questions.findBy("id",questionId);
-        que.isAnswered = true;
-        que.optionSelected=optSel;
-	console.log(que.correctAnswer);
-        que.isCorrect = (optSel === que.correctAnswer);
+  que.isAnswered = true;
+  que.optionSelected=optSel;
+  que.isCorrect = (optSel === que.correctAnswer);
 }
 });
 

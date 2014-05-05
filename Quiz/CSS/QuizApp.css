@@ -83,3 +83,26 @@ float:left;
 .next{
 float:right;
 }
+
+.font30{
+font-size:30px;
+}
+
+.green{
+color:green;
+}
+
+.red{
+color:Red;
+}
+
+.bold{
+font-weight:bold;
+}
+
+.quit{
+    bottom: 50px;
+    position: absolute;
+    text-align: center;
+    width: 500px;
+}

@@ -23,7 +23,7 @@
 	<div>
 	<h3>Question No {{id}} : {{question}}</h3>
 	{{#each option in answers}}
-	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionIdBinding=id optSelBinding=option}}
+	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionId=id optSel=option}}
 	{{option}}
 	{{/view}}
 	<!-- <div class="option" {{action "questionAnswered" id option}}>{{option}}</div>
@@ -40,8 +40,16 @@
 
 <script type="text/x-handlebars" id="result">
  <div class="questionBox" style="padding:50px;">
-	Correct Answers:{{correctAnswers}}/{{totalAnswered}}
-	Unanswered:{{unanswered}}
+    <h1>Congratulations {{username}}</h1>
+    <p>
+        You have answered <span class="font30 bold green">{{correctAnswers}}</span> correctly out of <span class="font30 bold green">{{totalAnswered}}</span> attempted.
+    </p>
+    <p>
+	    You have left <span class="font30 bold red">{{unanswered}}</span> unattempted.
+    </p>
+    <div class="quit">
+        <button {{action "quitQuiz"}}>Quit!</button>
+    </div>
  </div>
 </script>
 
@@ -54,5 +62,6 @@
 <script src="JS/Controllers/WelcomeController.js"></script>
 <script src="JS/Routes/ResultRoute.js"></script>
 <script src="JS/Routes/QuestionRoute.js"></script>
+<script src="JS/Routes/WelcomeRoute.js"></script>
 </body>
 </html>
