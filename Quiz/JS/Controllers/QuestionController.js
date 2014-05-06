@@ -42,10 +42,11 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
               },
 		 questionAnswered:function(questionId,optSel)
                       {
-                        var que = questions.findBy("id",questionId);
-                        que.isAnswered = true;
-                              console.log(que.correctAnswer);
-                              que.isCorrect = (optSel === que.correctAnswer);
+                        var que = this.store.find("question",questionId);
+                        console.log(que);
+                        que.set("isAnswered", true);
+                        que.set("optionSelected",optSel);
+                        que.set("isCorrect",(optSel === que.correctAnswer));
                       }
 	}
 });

@@ -23,12 +23,11 @@
 	<div>
 	<h3>Question No {{id}} : {{question}}</h3>
 	{{#each option in answers}}
-	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionId=id optSel=option}}
+<!--	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionId=id optSel=option}}
 	{{option}}
-	{{/view}}
-	<!-- <div class="option" {{action "questionAnswered" id option}}>{{option}}</div>
-	-->
-	{{/each}}
+	{{/view}} -->
+	<div {{bind-attr class="isAnswered && optionSelected == option:option clicked:option"}} {{action "questionAnswered" id option}}>{{option}}</div>
+    {{/each}}
 	</div>
 	</div>
 	<div class="nextPrevDiv">
@@ -56,6 +55,7 @@
 <script src="../jquery-1.10.2.js"></script>
 <script src="../handlebars-1.1.2.js"></script>
 <script src="../ember-1.5.1.js"></script>
+<script src="../ember-data.js"></script>
 <script src="JS/QuizApp.js"></script>
 <script src="JS/Controllers/QuestionController.js"></script>
 <script src="JS/Controllers/ResultController.js"></script>
@@ -63,5 +63,6 @@
 <script src="JS/Routes/ResultRoute.js"></script>
 <script src="JS/Routes/QuestionRoute.js"></script>
 <script src="JS/Routes/WelcomeRoute.js"></script>
+<script src="JS/Models/QuestionModel.js"></script>
 </body>
 </html>

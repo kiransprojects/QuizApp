@@ -23,13 +23,13 @@ init:function(controller){
 correctAnswers:function()
                {
                   return this.filterBy("isCorrect",true).length;
-               }.property(),
+               }.property("isCorrect"),
 totalAnswered:function()
               {
                 return this.filterBy("isAnswered",true).length;
-              }.property(),
+              }.property("isAnswered"),
 unanswered:function()
            {
               return this.get("model").length-this.get("totalAnswered");
-           }.property()
+           }.property("totalAnswered")
 });
