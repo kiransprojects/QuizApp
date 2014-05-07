@@ -2,51 +2,96 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
 
    username:"",
 
-   init:function(controller)
-        {
-          var username=localStorage.getItem("username");
-          if(username == null || username.trim().length <= 0)
-          {
-            localStorage.setItem("redirectURL",window.location.href);
-            this.transitionToRoute('welcome');
-            return;
-          }
-          else
-          {
-            this.username=username;
-          }
-        },
+   init:function()
+   {
+      this._super();
+      var username=localStorage.getItem("username");
+      if(username == null || username.trim().length <= 0)
+      {
+        localStorage.setItem("redirectURL",window.location.href);
+        this.transitionToRoute('welcome');
+        return;
+      }
+      else
+      {
+        this.username=username;
+      }
+   },
+
+   totalQuestions: function(){
+
+
+     console.log(length);
+     return length;
+   }.property(),
 
    actions:
    {
 
      next:function(id)
-          {
-            var nextQ = parseInt(id)+1;
-            if(nextQ > questions.length)
-            {
-              this.transitionToRoute('result');
-              return;
-            }
-            this.transitionToRoute('/'+nextQ);
-          },
-		 previous:function(id)
-              {
-                var previousQ=parseInt(id)-1;
-                if(previousQ <= 0)
-                {
-                   return alert("You are at the beginning of Quiz!");
-                }
+     {
+       var nextQ = parseInt(id)+1;
 
-                this.transitionToRoute('/'+previousQ);
-              },
+       var self = this;
+
+       this.store.find("question").then(function(ques){
+
+           var length = ques.get("length")
+
+           if(nextQ > length)
+           {
+             self.transitionToRoute('/result');
+             return;
+           }
+           self.transitionToRoute('/'+nextQ);
+
+          });
+
+     },
+		 previous:function(id)
+     {
+       var previousQ=parseInt(id)-1;
+       if(previousQ <= 0)
+       {
+         return alert("You are at the beginning of Quiz!");
+       }
+
+       this.transitionToRoute('/'+previousQ);
+     },
 		 questionAnswered:function(questionId,optSel)
-                      {
-                        var que = this.store.find("question",questionId);
-                        console.log(que);
-                        que.set("isAnswered", true);
-                        que.set("optionSelected",optSel);
-                        que.set("isCorrect",(optSel === que.correctAnswer));
-                      }
+     {
+       this.store.find("question",questionId).then(function(que){
+         console.log(que);
+         console.log(que.get("isAnswered"));
+         que.set("isAnswered", true);
+         console.log(que.get("isAnswered"));
+         que.set("optionSelected",optSel);
+          console.log(que.get("isAnswered"));
+         que.set("isCorrect",(optSel === que.correctAnswer));
+       });
+
+     }
 	}
+});
+
+QuizApp.RadioButton = Ember.View.extend({
+  tagName: "input",
+  type:"radio",
+
+  attributeBindings:["name","type","value","checked:checked"],
+
+  change:function(){
+    console.log(this.get("value"));
+    this.set("controller.isAnswered",true);
+    this.set("controller.isCorrect",(this.get("value") === this.get("controller.correctAnswer")));
+    this.set("controller.optionSelected",this.get("value"));
+    console.log(this.get("controller.question")+" -- "+this.get("controller.optionSelected"));
+  },
+
+  checked: function () {
+    console.log("coming here");
+    console.log(this.get('controller.optionSelected') === this.get('value'));
+    return this.get('controller.optionSelected') === this.get('value');
+  }.property('controller.optionSelected'),
+
 });

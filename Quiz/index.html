@@ -23,10 +23,9 @@
 	<div>
 	<h3>Question No {{id}} : {{question}}</h3>
 	{{#each option in answers}}
-<!--	{{#view QuizApp.OptionView itemBinding="this" class="option" tagName="div" questionId=id optSel=option}}
-	{{option}}
-	{{/view}} -->
-	<div {{bind-attr class="isAnswered && optionSelected == option:option clicked:option"}} {{action "questionAnswered" id option}}>{{option}}</div>
+
+    {{view QuizApp.RadioButton name="options" value=option}}<label>{{option}}</label>
+
     {{/each}}
 	</div>
 	</div>
