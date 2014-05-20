@@ -16,18 +16,11 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
       {
         this.username=username;
       }
+    //  this.startTimer();
    },
-
-   totalQuestions: function(){
-
-
-     console.log(length);
-     return length;
-   }.property(),
 
    actions:
    {
-
      next:function(id)
      {
        var nextQ = parseInt(id)+1;

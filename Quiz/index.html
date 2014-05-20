@@ -10,8 +10,8 @@
 <div class="questionBox" style="padding-left:50px;padding-top:10px;">
 	<h1>Welcome to Quiz</h1>
 	<div>
-  		<label>Enter you Name:</label> {{input class="nameBox" type="text" value=username}}
-  		<button {{action 'enterQuiz'}}>Enter Quiz!</button>
+  		<label>Enter you Name:</label> {{input name="namebox" class="nameBox" type="text" value=username}}
+  		<button name="enterquiz" {{action 'enterQuiz'}}>Enter Quiz!</button>
 	</div>
 </div>
 </script>
@@ -19,14 +19,12 @@
 <script type="text/x-handlebars" id="question">
 <div class="questionBox">
 	<div style="padding-left:50px;">
-	<h1>Welcome {{username}}</h1>
+	<h1 name="welcomemsg">Welcome {{username}}</h1>
 	<div>
 	<h3>Question No {{id}} : {{question}}</h3>
 	{{#each option in answers}}
-
     {{view QuizApp.RadioButton name="options" value=option}}<label>{{option}}</label>
-
-    {{/each}}
+  {{/each}}
 	</div>
 	</div>
 	<div class="nextPrevDiv">
