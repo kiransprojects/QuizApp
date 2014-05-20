@@ -17,7 +17,7 @@ actions:{
       				return;
       			}
       	 }
-        this.transitionToRoute('/1');
+         this.transitionToRoute('/1');
   	}
    }
 });

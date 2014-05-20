@@ -1,19 +1,37 @@
 describe("Welcome Controller Testing",function(){
 
 before(function(){
+    alertstub = sinon.stub(window, "alert");
     var controller = QuizApp.__container__.lookup("controller:welcome");
-    stub = sinon.stub(window, "alert");
+    constub = sinon.stub(controller, "transitionToRoute");
+  //locstub = sinon.stub(localStorage, "setItem");
+
 });
 
-it("should throw error on calling enterQuiz without username:",function(){
+it("should throw error on calling enterQuiz without username",function(){
    var controller = QuizApp.__container__.lookup("controller:welcome");
    controller.send("enterQuiz");
-   console.log(stub.getCall(0).args[0]);
-   stub.getCall(0).args[0].should.equal("Enter Propername to Proceed!");
+   alertstub.getCall(0).args[0].should.equal("Enter Propername to Proceed!");
 });
 
+it("should enter quiz on providing username",function(){
+    var controller = QuizApp.__container__.lookup("controller:welcome");
+   controller.username="Kiran Kumar";
+   controller.send("enterQuiz");
+   expect(constub.called).to.be.true;
+});
+
+// it("should use localStorage on providing username:",function(){
+//    var controller = QuizApp.__container__.lookup("controller:welcome");
+//    controller.username="Kiran Kumar"
+//    controller.send("enterQuiz");
+//    expect(locstub.called).to.be.true;
+// });
+
 after(function(){
-  stub.restore();
+  alertstub.restore();
+  constub.restore();
+//  locstub.restore();
 });
 
 });
