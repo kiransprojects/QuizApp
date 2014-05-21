@@ -9,7 +9,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
       if(username == null || username.trim().length <= 0)
       {
         localStorage.setItem("redirectURL",window.location.href);
-        this.transitionToRoute('welcome');
+        this.transitionToRoute("welcome");
         return;
       }
       else
