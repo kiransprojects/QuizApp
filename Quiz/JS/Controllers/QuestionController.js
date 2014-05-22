@@ -26,7 +26,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
        var nextQ = parseInt(id)+1;
 
        var self = this;
-
+console.log(this);
        this.store.find("question").then(function(ques){
 
            var length = ques.get("length")
@@ -37,9 +37,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
              return;
            }
            self.transitionToRoute('/'+nextQ);
-
           });
-
      },
 		 previous:function(id)
      {
@@ -53,16 +51,11 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
      },
 		 questionAnswered:function(questionId,optSel)
      {
-       this.store.find("question",questionId).then(function(que){
-         console.log(que);
-         console.log(que.get("isAnswered"));
+         this.store.find("question",questionId).then(function(que){
          que.set("isAnswered", true);
-         console.log(que.get("isAnswered"));
          que.set("optionSelected",optSel);
-          console.log(que.get("isAnswered"));
          que.set("isCorrect",(optSel === que.correctAnswer));
-       });
-
+         });
      }
 	}
 });
