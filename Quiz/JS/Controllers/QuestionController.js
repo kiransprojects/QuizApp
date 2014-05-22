@@ -24,20 +24,19 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
      next:function(id)
      {
        var nextQ = parseInt(id)+1;
-
        var self = this;
-console.log(this);
        this.store.find("question").then(function(ques){
-
            var length = ques.get("length")
-
            if(nextQ > length)
            {
+             console.log("coming result");
              self.transitionToRoute('/result');
              return;
            }
-           console.log(nextQ);
-           self.transitionToRoute('/'+nextQ);
+           var route='/'+nextQ;
+           console.log("coming re");
+           console.log(route);
+           self.transitionToRoute(route);
           });
      },
 		 previous:function(id)
@@ -47,7 +46,6 @@ console.log(this);
        {
          return alert("You are at the beginning of Quiz!");
        }
-
        this.transitionToRoute('/'+previousQ);
      },
 		 questionAnswered:function(questionId,optSel)

@@ -1,0 +1,37 @@
+<html>
+<head>
+<link rel="stylesheet" href="../mocha.css" />
+</head>
+<body>
+
+<div id="mocha"></div>
+
+<script src="../jquery-1.10.2.js"></script>
+<script src="../handlebars-1.1.2.js"></script>
+<script src="../ember-1.5.1.js"></script>
+<script src="../ember-data.js"></script>
+<script src="../Quiz/JS/QuizApp.js"></script>
+<script src="../Quiz/JS/Controllers/QuestionController.js"></script>
+<script src="../Quiz/JS/Controllers/ResultController.js"></script>
+<script src="../Quiz/JS/Controllers/WelcomeController.js"></script>
+<script src="../Quiz/JS/Routes/ResultRoute.js"></script>
+<script src="../Quiz/JS/Routes/QuestionRoute.js"></script>
+<script src="../Quiz/JS/Routes/WelcomeRoute.js"></script>
+<script src="../Quiz/JS/Models/QuestionModel.js"></script>
+<script src="../mocha.js"></script>
+<script src="../chai.js"></script>
+<script src="../sinon-1.10.0.js"></script>
+<script>mocha.setup("bdd");
+var assert = chai.assert,
+    expect = chai.expect,
+    should = chai.should();
+</script>
+<script src="WelcomeControllerTest.js"></script>
+<script src="QuestionControllerTest.js"></script>
+<script>
+//mocha.checkLeaks();
+mocha.run();
+</script>
+</body>
+
+</html>
