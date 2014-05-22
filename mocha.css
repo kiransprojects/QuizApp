@@ -26,7 +26,8 @@ body {
 
 #mocha h1 {
   margin-top: 15px;
-  font-size: 1em;
+  font-size: 1.5em;
+  line-height:2em;
   font-weight: 200;
 }
 
@@ -49,7 +50,8 @@ body {
 }
 
 #mocha h2 {
-  font-size: 12px;
+  font-size: 13px;
+  line-height:25px;
   font-weight: normal;
   cursor: pointer;
 }

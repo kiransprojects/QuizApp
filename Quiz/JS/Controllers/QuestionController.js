@@ -29,13 +29,10 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
            var length = ques.get("length")
            if(nextQ > length)
            {
-             console.log("coming result");
              self.transitionToRoute('/result');
              return;
            }
            var route='/'+nextQ;
-           console.log("coming re");
-           console.log(route);
            self.transitionToRoute(route);
           });
      },
