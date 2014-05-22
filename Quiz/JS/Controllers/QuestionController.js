@@ -8,7 +8,7 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
       var username=localStorage.getItem("username");
       if(username == null || username.trim().length <= 0)
       {
-        localStorage.setItem("redirectURL",window.location.href);
+    //    localStorage.setItem("redirectURL",window.location.href);
         this.transitionToRoute("welcome");
         return;
       }

@@ -22,7 +22,7 @@ QuizApp.ResultController = Ember.ArrayController.extend({
     quitQuiz:function()
     {
       localStorage.removeItem("username");
-      localStorage.removeItem("redirectURL");
+  //    localStorage.removeItem("redirectURL");
       this.transitionToRoute('welcome');
     }
   },
