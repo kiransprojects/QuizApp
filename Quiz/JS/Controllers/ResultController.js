@@ -1,11 +1,10 @@
 QuizApp.ResultController = Ember.ArrayController.extend({
-  username:"",
 
-  init:function(controller)
-  {
+username:"",
+
+init:function(controller)
+{
     var username=localStorage.getItem("username");
-
-
     if(username == null || username.trim().length <= 0)
     {
       this.transitionToRoute('welcome');
@@ -15,28 +14,31 @@ QuizApp.ResultController = Ember.ArrayController.extend({
     {
       this.username=username;
     }
-  },
+},
 
-  actions:
-  {
+actions:
+{
     quitQuiz:function()
     {
       localStorage.removeItem("username");
   //    localStorage.removeItem("redirectURL");
       this.transitionToRoute('welcome');
     }
-  },
+},
 
 correctAnswers:function()
-               {
-                  return this.get("model").filterBy("isCorrect",true).length;
-               }.property("isCorrect"),
+{
+  return this.get("model").filterBy("isCorrect",true).length;
+}.property("isCorrect"),
+
 totalAnswered:function()
-              {
-                return this.get("model").filterBy("isAnswered",true).length;
-              }.property("isAnswered"),
+{
+  return this.get("model").filterBy("isAnswered",true).length;
+}.property("isAnswered"),
+
 unanswered:function()
-           {
-              return this.get("model").get("length")-this.get("totalAnswered");
-           }.property("totalAnswered")
+{
+  return this.get("model").get("length")-this.get("totalAnswered");
+}.property("totalAnswered")
+
 });
