@@ -55,16 +55,12 @@ QuizApp.RadioButton = Ember.View.extend({
   attributeBindings:["name","type","value","checked:checked"],
 
   change:function(){
-    console.log(this.get("value"));
     this.set("controller.isAnswered",true);
     this.set("controller.isCorrect",(this.get("value") === this.get("controller.correctAnswer")));
     this.set("controller.optionSelected",this.get("value"));
-    console.log(this.get("controller.question")+" -- "+this.get("controller.optionSelected"));
   },
 
   checked: function () {
-    console.log("coming here");
-    console.log(this.get('controller.optionSelected') === this.get('value'));
     return this.get('controller.optionSelected') === this.get('value');
   }.property('controller.optionSelected'),
 
