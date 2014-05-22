@@ -36,6 +36,7 @@ console.log(this);
              self.transitionToRoute('/result');
              return;
            }
+           console.log(nextQ);
            self.transitionToRoute('/'+nextQ);
           });
      },

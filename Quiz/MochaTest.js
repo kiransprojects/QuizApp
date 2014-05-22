@@ -69,41 +69,10 @@ it("Question model test",function(){
 
 it("Should take you to NEXT question", function(){
     var controller = QuizApp.__container__.lookup("controller:question");
-  //   var model = QuizApp.Question.create(
-  //     {id:1,question:"Capital City of Tamilnadu?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Chennai", isAnswered:false, isCorrect:false, optionSelected:""},
-  //     {id:2,question:"Capital City of Andhra Pradesh?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Hyderabad", isAnswered:false, isCorrect:false,optionSelected:""},
-  //     {id:3,question:"Capital City of Karnataka?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Bangalore", isAnswered:false, isCorrect:false,optionSelected:""},
-  //     {id:4,question:"Capital City of Kerala?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Kochin", isAnswered:false, isCorrect:false,optionSelected:""}
-  //   );
-  //
-  //    controller.set('model', model);
-  // //  var store = DS.Store.create({
-  //           revision: 12,
-  //           adapter: DS.Adapter.create()
-  //       });
-  //
-  //       store.push( QuizApp.Question,
-  //     {id:1,question:"Capital City of Tamilnadu?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Chennai", isAnswered:false, isCorrect:false, optionSelected:""},
-  //     {id:2,question:"Capital City of Andhra Pradesh?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Hyderabad", isAnswered:false, isCorrect:false,optionSelected:""},
-  //     {id:3,question:"Capital City of Karnataka?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Bangalore", isAnswered:false, isCorrect:false,optionSelected:""},
-  //     {id:4,question:"Capital City of Kerala?", answers:["Hyderabad", "Chennai", "Kochin", "Bangalore"], correctAnswer:"Kochin", isAnswered:false, isCorrect:false,optionSelected:""}
-  //     );
-  //
-  // controller.set("store", store);
-  //
-  // console.log(controller);
-  //
-  // var boundSend = controller.send.bind(controller);
-  // boundSend("next",1);
-
-  var Question = QuizApp.__container__.lookup("store:main").find("question").then(function(model){
-    controller.set("model",model);
-  });
-  //console.log(Question);
-  var boundSend = controller.send.bind(controller);
-  boundSend("next",1);
-//  controller.send("next","1");
-  expect(nextStubWithValue.called).to.be.true;
+    var store = QuizApp.__container__.lookup("store:main");
+    controller.set("store", store);
+    controller.send("next","1");
+    expect(nextStubWithValue.called).to.be.true;
 })
 
 afterEach(function(){
