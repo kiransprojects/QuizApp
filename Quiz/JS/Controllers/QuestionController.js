@@ -44,14 +44,6 @@ QuizApp.QuestionController=Ember.ObjectController.extend({
          return alert("You are at the beginning of Quiz!");
        }
        this.transitionToRoute('/'+previousQ);
-     },
-		 questionAnswered:function(questionId,optSel)
-     {
-         this.store.find("question",questionId).then(function(que){
-         que.set("isAnswered", true);
-         que.set("optionSelected",optSel);
-         que.set("isCorrect",(optSel === que.correctAnswer));
-         });
      }
 	}
 });
